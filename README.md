@@ -21,7 +21,7 @@ A simple discussion board web application built with Django. Users can create po
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/django-discussion-board.git 
+   git clone https://github.com/Lauri221/django_web_app_discussion_board_4_ai_course.git 
    cd django-discussion-board
 2. **Create and activate a virtual environment:**
 On Windows:
