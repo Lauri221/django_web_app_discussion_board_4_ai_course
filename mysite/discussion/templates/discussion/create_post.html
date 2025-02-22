@@ -1,0 +1,20 @@
+<!-- filepath: /e:/Python/ai_course/ass_21/mysite/discussion/templates/discussion/create_post.html -->
+{% extends "base.html" %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h2>Create a New Post</h2>
+  </div>
+  <div class="card-body">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>
+<a href="{% url 'post_list' %}" class="btn btn-link mt-3">Back to Post List</a>
+{% endblock %}

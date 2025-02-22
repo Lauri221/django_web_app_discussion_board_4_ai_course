@@ -1,0 +1,36 @@
+<!-- filepath: /e:/Python/ai_course/ass_21/mysite/discussion/templates/discussion/post_detail.html -->
+{% extends "base.html" %}
+
+{% block title %}Post Detail{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+  <div class="card-header">
+    <h2>Post by {{ post.nickname }}</h2>
+    <small class="text-muted">{{ post.created_at }}</small>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ post.content }}</p>
+  </div>
+</div>
+
+<div class="mb-4">
+  <h3>Replies</h3>
+  {% if post.replies.all %}
+    {% for reply in post.replies.all %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ reply.nickname }}</h5>
+          <small class="text-muted">{{ reply.created_at }}</small>
+          <p class="card-text mt-2">{{ reply.content }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No replies yet.</p>
+  {% endif %}
+</div>
+
+<a href="{% url 'create_reply' post.id %}" class="btn btn-warning">Add Reply</a>
+<a href="{% url 'post_list' %}" class="btn btn-link">Back to Post List</a>
+{% endblock %}

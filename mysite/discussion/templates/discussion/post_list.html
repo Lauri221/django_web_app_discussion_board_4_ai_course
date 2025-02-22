@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post List</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block title %}Post List{% endblock %}
+
+    {% block content %}
+    <div class="container">
+      <h1 class="mb-4">All Posts</h1>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for post in posts %}
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.nickname }}</h5>
+                <small class="text-muted">{{ post.created_at }}</small>
+                <p class="card-text mt-2">{{ post.content|truncatewords:20 }}</p>
+                <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">View Details</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <a href="{% url 'create_post' %}" class="btn btn-success mt-3">Create Post</a>
+    </div>
+    {% endblock %}
+</body>
+</html>
